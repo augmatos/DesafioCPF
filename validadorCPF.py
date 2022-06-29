@@ -1,6 +1,6 @@
 while True:
     while True:
-        cpf = input('Digite o CPF sem ponto e traco para validacao: ')
+        cpf = input('Digite o CPF sem ponto e traço para validação: ')
         if not cpf.isnumeric() or len(cpf) != 11:
             print('Voce nao digitou o CPF corretamente.')
         else:
@@ -26,6 +26,6 @@ while True:
             t = 0
             novo_cpf += str(d)
     if novo_cpf == cpf:
-        print('O CPF digitado e valido. ')
+        print('O CPF digitado e válido. ')
     else:
-        print('O CPF digitado e invalido. ')
+        print('O CPF digitado e inválido. ')
