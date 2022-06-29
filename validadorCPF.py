@@ -1,6 +1,6 @@
 while True:
     while True:
-        cpf = input('Digite o CPF sem ponto e traço para validação: ')
+        cpf = input('Digite o CPF sem ponto e traço para ser validado: ')
         if not cpf.isnumeric() or len(cpf) != 11:
             print('Voce nao digitou o CPF corretamente.')
         else:
