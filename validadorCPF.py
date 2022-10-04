@@ -1,31 +1,36 @@
-while True:
-    while True:
-        cpf = input('Digite o CPF sem ponto e traço para ser validado: ')
-        if not cpf.isnumeric() or len(cpf) != 11:
-            print('Voce nao digitou o CPF corretamente.')
-        else:
-            break
+import re
 
-    r = 10
+
+def valida_cpf(cpf):
+    cpf = str(cpf)
+    cpf = re.sub(r'[^0-9]', '', cpf)
+
+    if not cpf or len(cpf) != 11:
+        return False
+
+    reverso = 10
     novo_cpf = cpf[:-2]
-    t = 0
+    total = 0
 
     for i in range(19):
         if i > 8:
             i -= 9
 
-        t += int(novo_cpf[i]) * r
+        total += int(novo_cpf[i]) * reverso
 
-        r -= 1
-        if r < 2:
-            r = 11
-            d = 11 - (t % 11)
+        reverso -= 1
+        if reverso < 2:
+            reverso = 11
+            d = 11 - (total % 11)
 
             if d > 9:
                 d = 0
-            t = 0
+            total = 0
             novo_cpf += str(d)
-    if novo_cpf == cpf:
-        print('O CPF digitado e válido. ')
+
+    sequencia = novo_cpf == str(novo_cpf[0]) * len(cpf)
+
+    if cpf == novo_cpf and not sequencia:
+        return True
     else:
-        print('O CPF digitado e inválido. ')
+        return False
